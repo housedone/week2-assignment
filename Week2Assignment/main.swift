@@ -7,21 +7,39 @@
 
 import Foundation
 
-/// 필수 문제 1
-let sum: (Int, Int) -> String = { a, b in
-    "두 수의 합은 \(a + b) 입니다."
-}
-
-print(sum(10, 20))
-
-func calculate(closure: (Int, Int) -> String) {
-    let result = sum(10, 20)
+while true {
+    print("출력 결과를 확인할 문제의 번호를 입력해주세요. (종료: 0) : ", terminator: "")
+    let inputNumber: String = readLine() ?? ""
     
-    print(result)
+    switch inputNumber {
+    case "0":
+        exit(0)
+    case "1":
+        problem01()
+    case "2":
+        problem02()
+    default:
+        print("올바른 번호를 입력해주세요.")
+    }
 }
 
-calculate(closure: sum)
+
+// 혹시나 이름 충돌 생기면
+/*
+ enum Exam1 {
+ protocol Intro {
+ }
+ }
+ */
 
 
-/// 필수 문제 2
+
+
+
+
+
+
+
+
+
 
