@@ -11,7 +11,7 @@ import Foundation
 func problem02() {
     let numbers = [1, 2, 3, 4, 5]
     
-    var result = numbers.map { String($0) }
+    let result = numbers.map { String($0) }
     
     print(result)
     print(type(of: result))
@@ -19,11 +19,26 @@ func problem02() {
     
     let numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     
-    var result2 = numbers2
+    let result2 = numbers2
         .filter { $0 % 2 == 0 }
         .map { String($0) }
     
+    print(result2)
     print(type(of: result2))
     
-    print(result2)
+    
+    
+    func myMap(_ array: [Int], _ transform: (Int) -> String) -> [String] {
+        var result: [String] = []
+        
+        for element in array {
+            result.append( transform(element) )
+        }
+        
+        return result
+    }
+    
+    let result3 = myMap([1, 2, 3, 4, 5]) { String($0) } // {}가 뜬금없이 있으면 대부분 클로저
+    
+    print(result3)
 }
