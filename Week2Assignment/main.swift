@@ -22,6 +22,8 @@ while true {
         problem03()
     case "4":
         problem04()
+    case "5":
+        problem05()
     default:
         print("올바른 번호를 입력해주세요.")
     }
