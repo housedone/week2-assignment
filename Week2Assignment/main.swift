@@ -15,15 +15,15 @@ while true {
     case "0":
         exit(0)
     case "1":
-        problem01()
+        problem01() // 필수 문제 1
     case "2":
-        problem02()
+        problem02() // 필수 문제 2
     case "3":
-        problem03()
+        problem03() // 필수 문제 3
     case "4":
-        problem04()
+        problem04() // 필수 문제 4 + 도전 문제 3
     case "5":
-        problem05()
+        problem05() // 필수 문제 5
     case "6":
         problem06() // 도전 문제 1
     case "7":
@@ -31,7 +31,7 @@ while true {
     case "8":
         problem08() // 도전 문제 4
     default:
-        print("올바른 번호를 입력해주세요.")
+        print("올바른 번호를 입력해주세요. (1 ~ 8)... 종료는 0")
     }
 }
 
