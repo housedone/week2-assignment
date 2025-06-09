@@ -13,6 +13,13 @@ protocol Introducible {
     func introduce() -> String
 }
 
+// MARK: 도전 문제 3 확장
+extension Introducible {
+    func introduce() -> String {
+        return "안녕하세요, 저는 \(name) 입니다."
+    }
+}
+
 class Robot: Introducible {
     var name: String {
         didSet {
@@ -31,7 +38,7 @@ class Robot: Introducible {
     }
     
     func introduce() -> String {
-        return "안녕하세요, 저는 \(name)입니다."
+        return "안 녕 하 세 요 , 저 는 [\(name)] 입 니 다 🤖"
     }
     
     func batteryCharge() {
@@ -47,7 +54,7 @@ class Cat: Introducible {
     }
     
     func introduce() -> String {
-        return "안녕하세요. 저는 \(name)이다 야옹."
+        return "나는 \(name)이다 야옹."
     }
     
     func makeScar() {
@@ -62,9 +69,9 @@ class Dog: Introducible {
         self.name = name
     }
     
-    func introduce() -> String {
-        return "안녕, 저는 \(name)입니다. 멍멍."
-    }
+//    func introduce() -> String {
+//        return "안녕, 저는 \(name)입니다. 멍멍."
+//    }
     
     func furMaker() {
         print("\(name)가 털을 뿜어댄다!")
@@ -75,7 +82,7 @@ func problem04() {
     let robot: Robot = Robot(name: "피규어")
     print(robot.introduce())
     robot.name = "옵티머스"
-    robot.name = "옵티머스"
+    robot.name = "옵티머스" // 이름 변경이 되지 않았을 때 예외처리 테스트용
     print(robot.introduce())
     robot.batteryCharge()
     
