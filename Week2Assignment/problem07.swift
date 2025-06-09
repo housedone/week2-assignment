@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 도전 문제 2
 struct SortableBox<T> {
     var items: [T]
 }

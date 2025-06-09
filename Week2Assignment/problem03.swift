@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 필수 문제 3
 func problem03() {
     func a(_ input: [Int]) -> [Int] {
         input.filter { $0 % 2 == 1 }

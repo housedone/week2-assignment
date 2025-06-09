@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 필수 문제 4 + 도전 문제 3
 protocol Introducible {
     var name: String { get }
     

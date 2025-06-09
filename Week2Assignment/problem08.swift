@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 도전 문제 4
 class Person {
     let name: String
     var motorcycle: Motorcycle?

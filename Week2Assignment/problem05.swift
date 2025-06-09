@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 필수 문제 5
 // 1. 배송 상태 열거형 정의
 enum DeliveryStatus {
     case notStarted
