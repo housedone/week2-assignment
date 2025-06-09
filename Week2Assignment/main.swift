@@ -28,6 +28,8 @@ while true {
         problem06() // 도전 문제 1
     case "7":
         problem07() // 도전 문제 2
+    case "8":
+        problem08() // 도전 문제 4
     default:
         print("올바른 번호를 입력해주세요.")
     }

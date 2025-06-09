@@ -5,7 +5,7 @@
 //  Created by 김우성 on 6/9/25.
 //
 
-import Foundation
+import Foundation // 접근제어자 설정 빠트렸다! 이따 다시 하자
 
 // MARK: 엔진 프로토콜 & 타입
 
