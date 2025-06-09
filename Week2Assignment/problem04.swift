@@ -103,18 +103,24 @@ func problem04() {
     print(dog.introduce())
     dog.furMaker()
     
+    print("\n\n\n")
+    
     // 5. [Introducible] 타입 배열 정의 & 순회 호출
     var introducible: [Introducible] = []
     introducible.append(robot)
     introducible.append(cat)
     introducible.append(dog)
     
+    // as? 를 사용한 타입 캐스팅. 타입이 맞으면 옵셔널로 캐스팅되고, 아니면 nil을 반환하여 안전하다.
     for item in introducible {
-        if item is Robot {
+        if let robot = item as? Robot {
+            print(robot.introduce())
             robot.batteryCharge()
-        } else if item is Cat {
+        } else if let cat = item as? Cat {
+            print(cat.introduce())
             cat.makeScar()
-        } else if item is Dog {
+        } else if let dog = item as? Dog {
+            print(dog.introduce())
             dog.furMaker()
         }
     }
