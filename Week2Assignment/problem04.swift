@@ -8,22 +8,27 @@
 import Foundation
 
 /// 필수 문제 4 + 도전 문제 3
+
+// 1. Introducible 프로토콜 정의
 protocol Introducible {
     var name: String { get }
     
     func introduce() -> String
 }
 
+
 // MARK: 도전 문제 3 확장
 extension Introducible {
-    func introduce() -> String {
+    func introduce() -> String { // 도전3-1. 기본 동작 제공
         return "안녕하세요, 저는 \(name) 입니다."
     }
 }
 
+
+// 2-1. Robot 타입 정의 (Introducible 프로토콜 채택)
 class Robot: Introducible {
     var name: String {
-        didSet {
+        didSet { // 3. name이 변경될 때마다 알림 출력
             if oldValue != name {
                 print("""
                 name 변경 알림
@@ -38,15 +43,18 @@ class Robot: Introducible {
         self.name = name
     }
     
-    func introduce() -> String {
+    func introduce() -> String { // 도전3-2. 커스텀 동작 구현
         return "안 녕 하 세 요 , 저 는 [\(name)] 입 니 다 🤖"
     }
     
+    // 4. 각 타입 고유의 메서드 추가
     func batteryCharge() {
         print("\(name)의 배터리를 충전중...")
     }
 }
 
+
+// 2-2. Cat 타입 정의 (Introducible 프로토콜 채택)
 class Cat: Introducible {
     var name: String
     
@@ -58,11 +66,14 @@ class Cat: Introducible {
         return "나는 \(name)이다 야옹."
     }
     
+    // 4. 각 타입 고유의 메서드 추가
     func makeScar() {
         print("당신은 \(name)에게 할퀴어져 상처를 입었다!")
     }
 }
 
+
+// 2-3. Dog 타입 정의 (Introducible 프로토콜 채택)
 class Dog: Introducible {
     var name: String
     
@@ -70,10 +81,7 @@ class Dog: Introducible {
         self.name = name
     }
     
-//    func introduce() -> String {
-//        return "안녕, 저는 \(name)입니다. 멍멍."
-//    }
-    
+    // 4. 각 타입 고유의 메서드 추가
     func furMaker() {
         print("\(name)가 털을 뿜어댄다!")
     }
@@ -95,6 +103,7 @@ func problem04() {
     print(dog.introduce())
     dog.furMaker()
     
+    // 5. [Introducible] 타입 배열 정의 & 순회 호출
     var introducible: [Introducible] = []
     introducible.append(robot)
     introducible.append(cat)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// 필수 문제 1 : 클로저 & 클로저를 파라미터로 받는 함수
+/// 필수 문제 1
 func problem01() {
     
     // 1. 클로저 설계
@@ -15,11 +15,12 @@ func problem01() {
         "두 수의 합은 \(a + b) 입니다."
     }
     
+    
     // 2. sum 호출
     print(sum(10, 20))
     
     
-    // 3. sum같은 타입의 클로저를 파라미터로 받는 함수
+    // 3. sum과 같은 타입의 클로저를 파라미터로 받는 함수
     func calculate(closure: (Int, Int) -> String) {
         let result = closure(10, 20)
         

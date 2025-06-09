@@ -8,6 +8,7 @@
 import Foundation
 
 /// 필수 문제 5
+
 // 1. 배송 상태 열거형 정의
 enum DeliveryStatus {
     case notStarted
@@ -22,7 +23,7 @@ enum DeliveryError: Error {
     case systemError(reason: String)
 }
 
-// 3. 배송 예측 함수 정의
+// 3. throwing function 구현
 func predictDeliveryDay(for address: String, status: DeliveryStatus) throws -> String {
     guard !address.trimmingCharacters(in: .whitespaces).isEmpty else {
         throw DeliveryError.invalidAddress
@@ -38,13 +39,14 @@ func predictDeliveryDay(for address: String, status: DeliveryStatus) throws -> S
     }
 }
 
-// 4. 테스트 및 예외 처리 함수
+
+// 4. do-catch로 호출, 각 에러 상황에 따라 다른 메시지 출력
 func problem05() {
     let testCases: [(String, DeliveryStatus)] = [
         ("", .inTransit(daysRemaining: 2)),
-        ("서울시 중구", .notStarted),
-        ("부산시 해운대구", .error(reason: "서버 응답 없음")),
-        ("대전시 유성구", .inTransit(daysRemaining: 5))
+        ("청주시 흥덕구", .notStarted),
+        ("인천시 미추홀구", .error(reason: "서버 응답 없음")),
+        ("서울시 마포구", .inTransit(daysRemaining: 5))
     ]
     
     for (address, status) in testCases {

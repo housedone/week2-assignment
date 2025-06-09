@@ -8,7 +8,6 @@
 import Foundation // 접근제어자 설정 빠트렸다! 이따 다시 하자
 
 /// 도전 문제 1
-// MARK: 엔진 프로토콜 & 타입
 
 protocol Engine {
     var description: String { get }
@@ -30,13 +29,14 @@ class HydrogenEngine: Engine {
     func start() { print("수소 엔진 시작") }
 }
 
-// MARK: Base Class
 
+// 1. Base Class `Car` 설계
 class Car {
-    var brand: String
-    var model: String
-    var year: String
-    var engine: Engine
+    private var brand: String
+    private var model: String
+    private var year: String        // 밖에서 접근 가능할 필요가 없다
+    fileprivate var engine: Engine  // HybridCar에서 접근이 필요하므로,
+                                    // internal로 둬도 좋지만 같은 파일 내에서만 수정 가능하도록 해도 괜찮다.
     
     init(brand: String, model: String, year: String, engine: Engine) {
         self.brand = brand
@@ -63,12 +63,16 @@ class Car {
     }
 }
 
+
+// 2. `ElectricCar` 설계 - Car 상속
 class ElectricCar: Car {
     init(brand: String, model: String, year: String) {
         super.init(brand: brand, model: model, year: year, engine: ElectricEngine())
     }
 }
 
+
+// 3. `HybridCar` 설계 - Car 상속
 class HybridCar: Car {
     func switchEngine(to newEngine: Engine) {
         self.engine = newEngine
@@ -76,8 +80,8 @@ class HybridCar: Car {
     }
 }
 
-// MARK: 테스트
 
+// 4. HybridCar 인스턴스 생성, switchEngine() 호출
 func problem06() {
     let hybridCar = HybridCar(brand: "현대", model: "그랜저", year: "2026", engine: ElectricEngine())
     hybridCar.drive()
@@ -85,8 +89,8 @@ func problem06() {
     hybridCar.drive()
 }
 
-/// 상속과 프로토콜의 차이, 장단점
-/// 상속은 상속받은 자식 클래스가 부모 클래스에서 구현된 내용을 그대로 쓸 수 있고, 재정의(override)할 수도 있다.
-///     단일 상속만 가능하다. 여러 부모에게서 물려받을 수는 없다. 여러 자식이 있을 수는 있다.
-/// 프로토콜은 이 프로토콜을 채택한 타입은 그것이 구현해야 할 기능을 모두 제공한다는 것을 약속한다.
-///     다중 채택이 가능하다. 공통적으로 구현된 파트의 공유가 어렵다.
+// 5. 상속과 프로토콜의 차이, 장단점
+/// - 상속은 상속받은 자식 클래스가 부모 클래스에서 구현된 내용을 그대로 쓸 수 있고, 재정의(override)할 수도 있다.
+///     - 단일 상속만 가능하다. 여러 부모에게서 물려받을 수는 없다. 여러 자식이 있을 수는 있다.
+/// - 프로토콜은 이 프로토콜을 채택한 타입은 그것이 구현해야 할 기능을 모두 제공한다는 것을 약속한다.
+///     - 다중 채택이 가능하다. 공통적으로 구현된 파트의 공유가 어렵다.
